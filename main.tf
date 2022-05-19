@@ -1,16 +1,8 @@
-# Configure Terraform to set the required AzureRM provider
-# version and features{} block.
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "3.6.0"
-    }
+locals {
+  default_tags = {
+    environment = var.environment
   }
-}
-
-provider "azurerm" {
-  features {}
+  assigned_tags = merge(local.default_tags, var.tags)
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -25,4 +17,5 @@ resource "azurerm_storage_account" "sa" {
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  tags = var.tags
+  tags                     = local.assigned_tags
+}
