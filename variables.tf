@@ -1,22 +1,23 @@
-variable "location" {
-  type    = string
-  default = "uksouth"
-}
 variable "environment" {
   type        = string
   description = "The staging environment being deployed into"
 }
 
-variable "rg_name" {
-  type    = string
-  default = "rg-storage-01"
+
+locals {
+  per_environment_settings = tomap({
+    dev = {
+      location = "uksouth"
+    }
+
+    prod = {
+      location = "eunorth"
+    }
+  })
+
+
+  location = local.per_environment_settings[var.environment].location
+
 }
 
-variable "storage_account_name" {
-  type    = string
-}
 
-variable "tags" {
-  type    = map(any)
-  default = {}
-}
