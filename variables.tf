@@ -5,7 +5,6 @@ variable "location" {
 variable "environment" {
   type        = string
   description = "The staging environment being deployed into"
-  default     = "Dev"
 }
 
 variable "rg_name" {
@@ -15,7 +14,6 @@ variable "rg_name" {
 
 variable "storage_account_name" {
   type    = string
-  default = "saukscsxdemo01"
 }
 
 variable "tags" {
