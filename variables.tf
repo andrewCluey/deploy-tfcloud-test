@@ -9,6 +9,14 @@ locals {
       location = "uksouth"
     }
 
+    uat = {
+      location = "eunorth"
+    }
+
+    qa = {
+      location = "uksouth"
+    }
+
     prod = {
       location = "eunorth"
     }
