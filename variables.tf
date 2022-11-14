@@ -3,7 +3,6 @@ variable "environment" {
   description = "The staging environment being deployed into"
 }
 
-
 locals {
   per_environment_settings = tomap({
     dev = {
@@ -20,4 +19,7 @@ locals {
 
 }
 
-
+variable "tags" {
+  type        = "map"
+  description = "a map of tags to apply"
+}
