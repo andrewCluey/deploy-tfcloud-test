@@ -20,6 +20,6 @@ locals {
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map
   description = "a map of tags to apply"
 }
