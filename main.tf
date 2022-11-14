@@ -19,3 +19,19 @@ resource "azurerm_storage_account" "main" {
   account_replication_type = "LRS"
   tags                     = local.assigned_tags
 }
+
+# feature tag - dev only for now
+resource "azurerm_virtual_network" "main" {
+  for_each = local.vnet_address_space == null ? [] : toset([1])
+
+  name                = "vn-${var.environment}-main"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+  address_space       = local.vnet_address_space
+  tags                = local.assigned_tags
+
+  subnet {
+    name           = "app"
+    address_prefix = local.app_sn_address_apace
+  }
+}

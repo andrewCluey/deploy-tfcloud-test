@@ -6,7 +6,9 @@ variable "environment" {
 locals {
   per_environment_settings = tomap({
     dev = {
-      location = "uksouth"
+      location             = "uksouth"
+      vnet_address_space   = ["10.0.0.0/16"]
+      app_sn_address_apace = ["10.0.1.0/24"]
     }
 
     uat = {
@@ -23,11 +25,13 @@ locals {
   })
 
 
-  location = local.per_environment_settings[var.environment].location
+  location             = local.per_environment_settings[var.environment].location
+  vnet_address_space   = local.per_environment_settings[var.environment].vnet_address_space
+  app_sn_address_apace = local.per_environment_settings[var.environment].app_sn_address_apace
 
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   description = "a map of tags to apply"
 }

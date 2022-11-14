@@ -1,4 +1,4 @@
 tags = {
-    owner = "ac"
-    application = "tf-cloud_demo"
+  owner       = "ac"
+  application = "tf-cloud_demo"
 }
