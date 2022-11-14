@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "main" {
 
 # feature tag - dev only for now
 resource "azurerm_virtual_network" "main" {
-  for_each = local.vnet_address_space == null ? [] : toset([1])
+  for_each = local.vnet_address_space != dev ? [] : toset([1])
 
   name                = "vn-${var.environment}-main"
   location            = azurerm_resource_group.main.location
