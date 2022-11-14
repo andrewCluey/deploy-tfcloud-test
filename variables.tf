@@ -20,6 +20,10 @@ locals {
     prod = {
       location = "eunorth"
     }
+
+    uat = {
+      location = "uksouth"
+    }
   })
 
 
@@ -28,6 +32,6 @@ locals {
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   description = "a map of tags to apply"
 }
