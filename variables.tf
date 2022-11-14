@@ -4,7 +4,7 @@ variable "environment" {
 }
 
 locals {
-  per_environment_settings = tomap({
+  per_environment_settings = {
     dev = {
       location             = "uksouth"
       vnet_address_space   = ["10.0.0.0/16"]
@@ -22,7 +22,7 @@ locals {
     prod = {
       location = "eunorth"
     }
-  })
+  }
 
 
   location             = local.per_environment_settings[var.environment].location
