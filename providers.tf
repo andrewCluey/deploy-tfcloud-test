@@ -1,5 +1,11 @@
 
 terraform {
+  backend "remote" {
+    organization = "asc-solutions"
+    workspaces {
+      prefix = "deploy-tfcloud-test-"
+    }
+  }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
