@@ -19,7 +19,7 @@ locals {
 
     qa = {
       location     = "uksouth"
-      vnet_enabled = false
+      vnet_enabled = true
       networks     = {
         main = {
           vnet_address_space   = ["10.1.0.0/16"]

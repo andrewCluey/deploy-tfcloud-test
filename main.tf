@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "main" {
 
 
 
-# feature tag - dev only for now
+# Example of a `feature flag` to deploy resources to ENVS only where its enabled.
 resource "azurerm_virtual_network" "main" {
   for_each = { for k, v in local.networks : k => v if local.vnet_enabled }
 
