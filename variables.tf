@@ -18,13 +18,15 @@ locals {
     }
 
     qa = {
-      location = "uksouth"
+      location     = "uksouth"
       vnet_enabled = false
+      networks     = {}
     }
 
     prod = {
-      location = "eunorth"
+      location     = "eunorth"
       vnet_enabled = false
+      networks     = {}
     }
   }
 
