@@ -20,7 +20,12 @@ locals {
     qa = {
       location     = "uksouth"
       vnet_enabled = false
-      networks     = {}
+      networks     = {
+        main = {
+          vnet_address_space   = ["10.1.0.0/16"]
+          app_sn_address_apace = "10.1.1.0/24"
+        }
+      }
     }
 
     prod = {
