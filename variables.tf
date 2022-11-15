@@ -17,16 +17,14 @@ locals {
       }
     }
 
-    uat = {
-      location = "eunorth"
-    }
-
     qa = {
       location = "uksouth"
+      vnet_enabled = true
     }
 
     prod = {
       location = "eunorth"
+      vnet_enabled = true
     }
   }
 
