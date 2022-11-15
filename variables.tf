@@ -3,12 +3,18 @@ variable "environment" {
   description = "The staging environment being deployed into"
 }
 
+# Per environment variables. Defined here so that we can apply different settings in each env.
 locals {
   per_environment_settings = {
     dev = {
-      location             = "uksouth"
-      vnet_address_space   = ["10.0.0.0/16"]
-      app_sn_address_apace = ["10.0.1.0/24"]
+      location     = "uksouth"
+      vnet_enabled = true
+      networks = {
+        main = {
+          vnet_address_space   = ["10.0.0.0/16"]
+          app_sn_address_apace = ["10.0.1.0/24"]
+        }
+      }
     }
 
     uat = {
@@ -25,9 +31,9 @@ locals {
   }
 
 
-  location             = local.per_environment_settings[var.environment].location
-  vnet_address_space   = local.per_environment_settings[var.environment].vnet_address_space
-  app_sn_address_apace = local.per_environment_settings[var.environment].app_sn_address_apace
+  location     = local.per_environment_settings[var.environment].location
+  networks     = local.per_environment_settings[var.environment].networks
+  vnet_enabled = local.per_environment_settings[var.environment].vnet_enabled
 
 }
 
