@@ -12,7 +12,7 @@ locals {
       networks = {
         main = {
           vnet_address_space   = ["10.0.0.0/16"]
-          app_sn_address_apace = ["10.0.1.0/24"]
+          app_sn_address_apace = "10.0.1.0/24"
         }
       }
     }
