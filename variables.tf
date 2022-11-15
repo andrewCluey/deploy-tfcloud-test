@@ -19,15 +19,14 @@ locals {
 
     qa = {
       location = "uksouth"
-      vnet_enabled = true
+      vnet_enabled = false
     }
 
     prod = {
       location = "eunorth"
-      vnet_enabled = true
+      vnet_enabled = false
     }
   }
-
 
   location     = local.per_environment_settings[var.environment].location
   networks     = local.per_environment_settings[var.environment].networks
